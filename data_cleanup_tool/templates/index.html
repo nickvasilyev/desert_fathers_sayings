@@ -1,0 +1,71 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+
+</head>
+<body>
+   <div class="container ">
+      <div class="py-5 text-center">
+        <a href="/{{data.saying_data.chapter_number}}/{{data.saying_data.saying_count - 1}}"><button class="btn btn-primary"> Previous </button></a>
+        <a href="/{{data.saying_data.chapter_number}}/{{data.saying_data.saying_count + 1}}"><button class="btn btn-primary"> Next </button></a>
+        <h4>Saying Number <b>{{data.saying_data.id}}</b></h4>
+      </div>
+      <div >
+        <form method="POST" action="/{{data.saying_data.chapter_number}}/{{data.saying_data.saying_count}}">
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Chapter Number</span>
+          </div>
+          <input id="chapter_number" type="text" class="form-control"
+          aria-label="Sizing example input"
+          name="chapter_number"
+          value="{{data.saying_data.chapter_number}}"
+          aria-describedby="inputGroup-sizing-default">
+
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Saying Count</span>
+          </div>
+          <input id="saying_count" type="text" class="form-control"
+          aria-label="Sizing example input"
+          name="saying_count"
+          value="{{data.saying_data.saying_count}}">
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Chapter Title</span>
+          </div>
+          <textarea id="chapter_title" name="chapter_title"
+            rows="2" cols="90" class="form-control"
+            aria-label="With textarea">{{data.saying_data.chapter_title}}</textarea>
+        </div>
+        <br>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Saying</span>
+          </div>
+          <textarea id="saying" name="saying"
+          style="overflow : auto;"
+          rows="{{ data.saying_data.saying | length / 60}}"
+          cols="90" class="form-control" aria-label="With textarea">{{data.saying_data.saying}}</textarea>
+        </div>
+        <select class="selectpicker mb-3" id="tags"
+        name="tags"
+        multiple size="20"
+        data.saying_data-live-search="true">
+          {% for tag in data.tags %}
+            <option {% if tag in data.saying_data.tags %} selected{% endif %}>{{tag}}</option>
+         {% endfor %}
+        </select>
+        <br>
+        <input class="btn btn-danger" type="submit" value="Submit">
+        </form>
+      </div>
+</div>
+  </body>
+
+</html>
