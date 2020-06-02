@@ -44,15 +44,27 @@
             aria-label="With textarea">{{data.saying_data.chapter_title}}</textarea>
         </div>
         <br>
+
+        <div class="input-group-prepend">
+          <span class="input-group-text">Saying</span>
+        </div>
         <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Saying</span>
-          </div>
           <textarea id="saying" name="saying"
           style="overflow : auto;"
           rows="{{ data.saying_data.saying | length / 60}}"
           cols="90" class="form-control" aria-label="With textarea">{{data.saying_data.saying}}</textarea>
         </div>
+
+        <div class="input-group-prepend">
+          <span class="input-group-text">SSML</span>
+        </div>
+        <div class="input-group mb-3">
+          <textarea id="saying_ssml" name="saying_ssml"
+          style="overflow : auto;"
+          rows="{{ data.saying_data.saying_ssml | length / 60 if data.saying_data.saying_ssm else data.saying_data.saying | length / 60 }}"
+          cols="90" class="form-control" aria-label="With textarea">{{data.saying_data.saying_ssml}}</textarea>
+        </div>
+
         <select class="selectpicker mb-3" id="tags"
         name="tags"
         multiple size="20"
