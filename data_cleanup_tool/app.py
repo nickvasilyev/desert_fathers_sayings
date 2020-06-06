@@ -33,6 +33,7 @@ TAGS = [
  'poverty',
  'weeping',
  'charity',
+ 'temptations',
  'QA'
  ]
 
